@@ -1,4 +1,5 @@
-LARGE_MODEL = "claude-3-opus-20240229" # The large model to use
+# LARGE_MODEL = "claude-3-opus-20240229" # The large model to use
+LARGE_MODEL = "glm-4" # The large model to use
 
 # SMALL_MODEL = "claude-3-haiku-20240307" # The small model to use
 SMALL_MODEL = "glm-4"
@@ -7,7 +8,7 @@ import openai
 import re
 
 openai.api_key = "sk-xpA4UDDjmVQU8oRp0cA2EaC9111f401483A2E9E957C02dBb"
-openai.base_url = "http://127.0.0.1:3000/v1/"
+openai.base_url = "http://127.0.0.1:33000/v1/"
 
 def generate_candidate_prompts(task, prompt_example, response_example):
     messages = [{
@@ -132,6 +133,7 @@ def run_haiku_conversion_process(task, prompt_example, response_example):
     generated_examples = generate_candidate_prompts(task, prompt_example, response_example)
 
     print('Prompts / responses generated. Now generating system prompt...')
+    print('generated_examples:', generated_examples)
 
     # Generate the system prompt
     system_prompt = generate_system_prompt(task, generated_examples)
